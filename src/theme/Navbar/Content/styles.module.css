@@ -1,0 +1,207 @@
+/* Navbar Container */
+.navbarContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 0 1.5rem; /* Slightly reduced horizontal padding to allow more inner space */
+  gap: 1.5rem;
+}
+
+/* Left Section */
+.navbarLeft {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; /* Normalized gap */
+  flex-shrink: 0;
+}
+
+/* ... language dropdown ... */
+
+/* Center Section - Search */
+.navbarCenter {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  /* Max-width is now handled largely by the input itself in custom.css, 
+     but we keep a container limit for the layout */
+  max-width: 600px; 
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  /* Fixed dimensions for stability */
+  height: 38px; 
+  padding: 0 0.75rem; /* Horizontal padding only, flex handles vertical alignment */
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  cursor: text;
+  box-sizing: border-box; /* Ensure border doesn't add to width/height */
+}
+
+.searchBar:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.searchBar:focus-within {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.searchIcon {
+  color: rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
+}
+
+.searchInput {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--ifm-navbar-link-color);
+  font-size: 0.85rem;
+  padding: 0;
+  min-width: 0;
+}
+
+.searchInput::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.searchKbd {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+  padding: 0.15rem 0.4rem;
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: inherit;
+  flex-shrink: 0;
+}
+
+/* Right Section */
+.navbarRight {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-shrink: 0;
+}
+
+.navLink {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  font-weight: 400;
+  text-decoration: none;
+  transition: color 0.15s ease;
+  white-space: nowrap;
+}
+
+.navLink:hover {
+  color: rgba(255, 255, 255, 0.95);
+  text-decoration: none;
+}
+
+.navLinkHighlight {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.15s ease;
+  white-space: nowrap;
+}
+
+.navLinkHighlight:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.chevron {
+  opacity: 0.7;
+}
+
+.colorModeToggle {
+  margin-left: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 996px) {
+  .navbarCenter,
+  .navLink,
+  .navLinkHighlight {
+    display: none;
+  }
+  
+  .navbarContainer {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .languageDropdown {
+    display: none;
+  }
+}
+
+/* Navbar Buttons */
+.navBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  font-family: var(--ifm-font-family-headings);
+  cursor: pointer;
+}
+
+.navBtn:hover {
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.navBtnPrimary {
+  background: linear-gradient(135deg, #eebfa5 0%, #d4a27f 100%);
+  color: #1a1a1c;
+  border: none;
+  font-weight: 700;
+  box-shadow: 0 0 15px rgba(212, 162, 127, 0.3);
+}
+
+.navBtnPrimary:hover {
+  background: linear-gradient(135deg, #f5d0b9 0%, #e0b596 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 0 20px rgba(212, 162, 127, 0.5);
+  color: #1a1a1c;
+}
+
+.navBtnSecondary {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #e4e4e7;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-weight: 600;
+}
+
+.navBtnSecondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  transform: translateY(-1px);
+}

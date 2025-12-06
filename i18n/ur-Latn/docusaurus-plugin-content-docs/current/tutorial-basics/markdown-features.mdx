@@ -1,0 +1,152 @@
+---
+sidebar_position: 4
+---
+
+# Markdown Ki Khasoosiyat
+
+Docusaurus **[Markdown](https://daringfireball.net/projects/markdown/syntax)** aur kuch **mazeed features** support karta hai.
+
+## Front Matter
+
+Markdown documents mein upar metadata hota hai jise [Front Matter](https://jekyllrb.com/docs/front-matter/) kehte hain:
+
+```text title="my-doc.md"
+// highlight-start
+---
+id: my-doc-id
+title: Mere document ka title
+description: Mere document ki description
+slug: /my-custom-url
+---
+// highlight-end
+
+## Markdown heading
+
+Markdown text with [links](./hello.md)
+```
+
+## Links
+
+Regular Markdown links support hain, url paths ya relative file paths use karke.
+
+```md
+Dekhein kaise [Ek page banayein](/create-a-page).
+```
+
+```md
+Dekhein kaise [Ek page banayein](./create-a-page.md).
+```
+
+**Nateeja:** Dekhein kaise [Ek page banayein](./create-a-page.md).
+
+## Images
+
+Regular Markdown images support hain.
+
+Aap absolute paths use kar sakte hain static directory mein images ke liye (`static/img/docusaurus.png`):
+
+```md
+![Docusaurus logo](/img/docusaurus.png)
+```
+
+![Docusaurus logo](/img/docusaurus.png)
+
+Aap current file ke relative images bhi reference kar sakte hain. Yeh khaas tor par useful hai images ko Markdown files ke qareeb rakhne ke liye:
+
+```md
+![Docusaurus logo](./img/docusaurus.png)
+```
+
+## Code Blocks
+
+Markdown code blocks Syntax highlighting ke saath support hain.
+
+````md
+```jsx title="src/components/HelloDocusaurus.js"
+function HelloDocusaurus() {
+  return <h1>Hello, Docusaurus!</h1>;
+}
+```
+````
+
+```jsx title="src/components/HelloDocusaurus.js"
+function HelloDocusaurus() {
+  return <h1>Hello, Docusaurus!</h1>;
+}
+```
+
+## Admonitions
+
+Docusaurus mein ek khaas syntax hai admonitions aur callouts banane ke liye:
+
+```md
+:::tip Meri tip
+
+Is shandar feature option ko use karein
+
+:::
+
+:::danger Khabardar rahein
+
+Yeh action khatarnak hai
+
+:::
+```
+
+:::tip Meri tip
+
+Is shandar feature option ko use karein
+
+:::
+
+:::danger Khabardar rahein
+
+Yeh action khatarnak hai
+
+:::
+
+## MDX aur React Components
+
+[MDX](https://mdxjs.com/) aap ki documentation ko zyada **interactive** bana sakta hai aur aap **koi bhi React component Markdown ke andar** use kar sakte hain:
+
+```jsx
+export const Highlight = ({children, color}) => (
+  <span
+    style={{
+      backgroundColor: color,
+      borderRadius: '20px',
+      color: '#fff',
+      padding: '10px',
+      cursor: 'pointer',
+    }}
+    onClick={() => {
+      alert(`Aap ne ${color} color click kiya label ${children} ke saath`)
+    }}>
+    {children}
+  </span>
+);
+
+Yeh hai <Highlight color="#25c2a0">Docusaurus green</Highlight> !
+
+Yeh hai <Highlight color="#1877F2">Facebook blue</Highlight> !
+```
+
+export const Highlight = ({children, color}) => (
+  <span
+    style={{
+      backgroundColor: color,
+      borderRadius: '20px',
+      color: '#fff',
+      padding: '10px',
+      cursor: 'pointer',
+    }}
+    onClick={() => {
+      alert(`Aap ne ${color} color click kiya label ${children} ke saath`);
+    }}>
+    {children}
+  </span>
+);
+
+Yeh hai <Highlight color="#25c2a0">Docusaurus green</Highlight> !
+
+Yeh hai <Highlight color="#1877F2">Facebook blue</Highlight> !

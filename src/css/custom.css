@@ -1,0 +1,636 @@
+/**
+ * Claude Code Docs Inspired Theme
+ * Premium dark theme with clean typography and refined spacing
+ */
+
+/* Import Google Fonts - Montserrat for headings/UI, Merriweather for body */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Merriweather:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ========================================
+   ROOT VARIABLES
+   ======================================== */
+:root {
+  /* Primary Color - Warm accent */
+  --ifm-color-primary: #d4a27f;
+  --ifm-color-primary-dark: #c88f68;
+  --ifm-color-primary-darker: #c2855d;
+  --ifm-color-primary-darkest: #b06d42;
+  --ifm-color-primary-light: #e0b596;
+  --ifm-color-primary-lighter: #e6be9f;
+  --ifm-color-primary-lightest: #f2dbc6;
+
+  /* Typography */
+  --ifm-font-family-base: 'Merriweather', Georgia, serif;
+  --ifm-font-family-headings: 'Montserrat', -apple-system, sans-serif;
+  --ifm-font-family-monospace: 'JetBrains Mono', 'Fira Code', monospace;
+  --ifm-code-font-size: 0.875rem;
+  
+  /* Layout */
+  --ifm-navbar-height: 4.5rem;
+  --doc-sidebar-width: 280px;
+  --ifm-line-height-base: 1.65;
+  
+  /* Spacing */
+  --ifm-spacing-horizontal: 1.5rem;
+
+  /* Font Size Scaling (default) */
+  --font-scale: 1;
+}
+
+/* ========================================
+   FONT SIZE ACCESSIBILITY SCALING
+   ======================================== */
+[data-font-size="lg"] {
+  --font-scale: 1.125;
+  --ifm-code-font-size: 0.9375rem;
+}
+
+[data-font-size="xl"] {
+  --font-scale: 1.25;
+  --ifm-code-font-size: 1rem;
+}
+
+[data-font-size="lg"] .markdown p,
+[data-font-size="lg"] .markdown li,
+[data-font-size="lg"] article {
+  font-size: calc(1rem * var(--font-scale));
+}
+
+[data-font-size="xl"] .markdown p,
+[data-font-size="xl"] .markdown li,
+[data-font-size="xl"] article {
+  font-size: calc(1rem * var(--font-scale));
+}
+
+[data-font-size="lg"] h1 { font-size: calc(2.25rem * var(--font-scale)); }
+[data-font-size="lg"] h2 { font-size: calc(1.5rem * var(--font-scale)); }
+[data-font-size="lg"] h3 { font-size: calc(1.25rem * var(--font-scale)); }
+
+[data-font-size="xl"] h1 { font-size: calc(2.25rem * var(--font-scale)); }
+[data-font-size="xl"] h2 { font-size: calc(1.5rem * var(--font-scale)); }
+[data-font-size="xl"] h3 { font-size: calc(1.25rem * var(--font-scale)); }
+
+/* ========================================
+   DARK MODE (DEFAULT)
+   ======================================== */
+[data-theme='dark'] {
+  /* Background Colors */
+  --ifm-background-color: #0a0a0c;
+  --ifm-background-surface-color: #0a0a0c;
+  --ifm-navbar-background-color: #0a0a0c;
+  --ifm-footer-background-color: #0a0a0c;
+  
+  /* Text Colors */
+  --ifm-font-color-base: #e4e4e7;
+  --ifm-font-color-secondary: #a1a1aa;
+  --ifm-heading-color: #fafafa;
+  
+  /* Sidebar */
+  --ifm-menu-color: #a1a1aa;
+  --ifm-menu-color-active: #fafafa;
+  --ifm-menu-color-background-active: rgba(212, 162, 127, 0.1);
+  --ifm-menu-color-background-hover: rgba(255, 255, 255, 0.03);
+  
+  /* Borders */
+  --ifm-color-emphasis-300: rgba(255, 255, 255, 0.08);
+  --ifm-hr-border-color: rgba(255, 255, 255, 0.06);
+  
+  /* Code blocks */
+  --ifm-code-background: rgba(255, 255, 255, 0.04);
+  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.05);
+}
+
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+
+/* Body text uses Merriweather (serif) */
+body {
+  font-family: var(--ifm-font-family-base);
+  font-size: 1rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings use Montserrat (sans-serif) */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ifm-font-family-headings);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ifm-heading-color);
+}
+
+/* UI elements use Montserrat */
+.navbar,
+.menu,
+.pagination-nav,
+.table-of-contents,
+button {
+  font-family: var(--ifm-font-family-headings);
+}
+
+h1 {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+/* Improved Vertical Rhythm for Headers */
+h2 {
+  font-size: 1.5rem;
+  line-height: 1.3;
+  margin-top: 3rem; /* --ifm-h2-vertical-rhythm-top: 3rem */
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--ifm-hr-border-color);
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin-top: 2.5rem; /* Increased breathing room */
+  margin-bottom: 1rem;
+}
+
+/* Paragraphs and content spacing */
+.markdown p,
+.markdown li {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ifm-font-color-base);
+  margin-bottom: 1.5rem; /* --ifm-paragraph-margin-bottom: 1.5rem */
+}
+
+/* First paragraph after h1 - subtext styling */
+.markdown > p:first-of-type,
+article header + p,
+.theme-doc-markdown > p:first-child {
+  color: var(--ifm-font-color-secondary);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+/* Breadcrumbs / Eyebrow text */
+.breadcrumbs {
+  margin-bottom: 0.5rem;
+  padding-left: 0;
+}
+
+.breadcrumbs__item {
+  font-family: var(--ifm-font-family-headings);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ifm-color-primary);
+}
+
+.breadcrumbs__link {
+  color: var(--ifm-color-primary);
+}
+
+.breadcrumbs__item--active .breadcrumbs__link {
+  color: var(--ifm-color-primary);
+  background: transparent;
+}
+
+/* Links */
+a {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--ifm-color-primary-light);
+  text-decoration: underline;
+}
+
+/* ========================================
+   NAVBAR
+   ======================================== */
+.navbar {
+  background-color: var(--ifm-navbar-background-color);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: none;
+  backdrop-filter: blur(12px);
+}
+
+.navbar__title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+}
+
+/* ========================================
+   SIDEBAR
+   ======================================== */
+.theme-doc-sidebar-container {
+  border-right: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Remove default sidebar border */
+aside.theme-doc-sidebar-container {
+  background-color: var(--ifm-background-color);
+}
+
+/* Sidebar menu */
+.menu {
+  padding: 1rem 0.75rem;
+}
+
+.menu__list {
+  padding: 0;
+  margin: 0;
+}
+
+.menu__list-item {
+  margin: 0;
+}
+
+/* Sidebar links */
+.menu__link {
+  font-size: 0.875rem;
+  font-weight: 400;
+  padding: 0.5rem 0.875rem;
+  border-radius: 6px;
+  color: var(--ifm-menu-color);
+  transition: all 0.15s ease;
+}
+
+.menu__link:hover {
+  background-color: var(--ifm-menu-color-background-hover);
+  color: var(--ifm-font-color-base);
+}
+
+.menu__link--active {
+  background-color: rgba(212, 162, 127, 0.15);
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+/* Sidebar category headers */
+.menu__list-item-collapsible .menu__link {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ifm-font-color-secondary);
+  padding: 0.75rem 0.875rem;
+  margin-top: 1rem;
+}
+
+.menu__list-item-collapsible .menu__link:hover {
+  background: transparent;
+  color: var(--ifm-font-color-base);
+}
+
+/* Nested sidebar items */
+.menu__list .menu__list {
+  padding-left: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+/* ========================================
+   MAIN CONTENT AREA
+   ======================================== */
+.main-wrapper {
+  background-color: var(--ifm-background-color);
+}
+
+article {
+  max-width: 860px; /* Slightly wider for better reading flow */
+  padding: 2.5rem 0;
+}
+
+/* Content container */
+.theme-doc-markdown {
+  padding: 0 2rem; /* Increased horizontal padding */
+}
+
+/* ========================================
+   CODE BLOCKS
+   ======================================== */
+code {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: var(--ifm-code-font-size);
+  background: var(--ifm-code-background);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+pre {
+  background: rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+pre code {
+  background: transparent;
+  padding: 0;
+  border: none;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+/* ========================================
+   TABLE OF CONTENTS
+   ======================================== */
+.table-of-contents {
+  font-size: 0.8125rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  padding-left: 1rem;
+}
+
+.table-of-contents__link {
+  color: var(--ifm-font-color-secondary);
+  transition: color 0.15s ease;
+}
+
+.table-of-contents__link:hover,
+.table-of-contents__link--active {
+  color: var(--ifm-color-primary);
+  border-left: 2px solid var(--ifm-color-primary);
+  padding-left: 0.8rem; /* Compensate for border */
+  margin-left: -1rem; /* Pull back to align */
+}
+
+/* ========================================
+   PAGINATION
+   ======================================== */
+.pagination-nav {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.pagination-nav__link {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  transition: all 0.15s ease;
+}
+
+.pagination-nav__link:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.pagination-nav__sublabel {
+  font-size: 0.75rem;
+  color: var(--ifm-font-color-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pagination-nav__label {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--ifm-font-color-base);
+}
+
+/* ========================================
+   SCROLLBAR
+   ======================================== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ========================================
+   CUSTOM SEARCH STYLING (@easyops-cn/docusaurus-search-local)
+   ======================================== */
+
+/* ========================================
+   CUSTOM SEARCH STYLING (@easyops-cn/docusaurus-search-local)
+   ======================================== */
+
+/* Reset the plugin's outer wrapper to fit our glass container */
+.navbar__search {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important; /* Ensure no border on wrapper */
+  box-shadow: none !important; 
+  background: transparent !important;
+}
+
+/* Make the actual input field transparent and properly sized */
+.navbar__search-input {
+  appearance: none !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  color: var(--ifm-navbar-link-color) !important;
+  font-family: inherit !important;
+  font-size: 0.95rem !important; /* Increased from 0.85rem for readability */
+  padding: 0 0.5rem !important;
+  margin: 0 !important;
+  /* Balanced Width Control */
+  width: 100% !important;
+  max-width: 250px !important; /* Visual improvement: Limit width */
+  height: 100% !important;
+  line-height: inherit !important;
+  cursor: text;
+}
+
+.navbar__search-input::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Hide webkit search decorations */
+.navbar__search-input::-webkit-search-decoration,
+.navbar__search-input::-webkit-search-cancel-button,
+.navbar__search-input::-webkit-search-results-button,
+.navbar__search-input::-webkit-search-results-decoration {
+  display: none !important;
+}
+
+/* PREMIUM DROPDOWN STYLING */
+/* Target the suggestions container specifically */
+.searchBar .suggestions {
+    background: rgba(20, 20, 23, 0.95) !important; /* Darker, richer background */
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05) !important;
+    padding: 0.75rem !important;
+    margin-top: 0.75rem !important;
+    max-height: 60vh !important; /* Use viewport height */
+    overflow-y: auto !important;
+    width: 300% !important; /* Make it wider than the input */
+    max-width: 600px !important;
+    right: 0 !important; /* Align right if needed, or adjust based on layout */
+    left: auto !important;
+}
+
+/* Individual Result Items */
+.searchBar .suggestions li {
+    background: transparent !important;
+    border-radius: 10px !important;
+    margin: 0.4rem 0 !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border: 1px solid transparent !important;
+}
+
+/* Active State / Hover */
+.searchBar .suggestions li:hover, 
+.searchBar .suggestions li.selected {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    transform: translateY(-1px);
+}
+
+/* Links inside items */
+.searchBar .suggestions li a {
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 500 !important;
+    padding: 1rem 1.25rem !important; /* Generous padding for touch/click targets */
+    display: flex !important;
+    flex-direction: column !important;
+    text-decoration: none !important;
+    gap: 0.25rem !important;
+}
+
+/* Result Title (if the plugin separates it) */
+.searchBar .suggestions li a .suggestion-title {
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    color: var(--ifm-color-primary-light) !important;
+}
+
+/* Result Content/Context */
+.searchBar .suggestions li a .suggestion-content {
+    font-size: 0.85rem !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    line-height: 1.5 !important;
+}
+
+/* Highlighted Terms */
+.searchBar .suggestions li mark {
+    background: rgba(212, 162, 127, 0.25) !important;
+    color: #eebfa5 !important; /* Lighter primary for contrast */
+    padding: 0 4px !important;
+    border-radius: 4px !important;
+    font-weight: 700 !important;
+    box-shadow: 0 0 0 1px rgba(212, 162, 127, 0.1) !important;
+}
+
+/* Scrollbar Styling for Dropdown */
+.searchBar .suggestions::-webkit-scrollbar {
+    width: 8px;
+}
+.searchBar .suggestions::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+}
+.searchBar .suggestions::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+}
+.searchBar .suggestions::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+
+/* ========================================
+   FLOATING ASK BUTTON
+   ======================================== */
+.ask-button-container {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  background: rgba(26, 26, 28, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  padding: 0.625rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ask-button-container:hover {
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.ask-button-text {
+  color: var(--ifm-font-color-secondary);
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.ask-button-shortcut {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+}
+
+/* ========================================
+   LIGHT MODE OVERRIDES
+   ======================================== */
+[data-theme='light'] {
+  --ifm-background-color: #ffffff;
+  --ifm-background-surface-color: #fafafa;
+  --ifm-font-color-base: #18181b;
+  --ifm-font-color-secondary: #71717a;
+  --ifm-heading-color: #09090b;
+  --ifm-menu-color: #52525b;
+  --ifm-menu-color-active: #18181b;
+  --ifm-menu-color-background-active: rgba(212, 162, 127, 0.12);
+  --ifm-menu-color-background-hover: rgba(0, 0, 0, 0.03);
+  --ifm-color-emphasis-300: rgba(0, 0, 0, 0.1);
+  --ifm-hr-border-color: rgba(0, 0, 0, 0.08);
+  --ifm-code-background: rgba(0, 0, 0, 0.04);
+}
+
+[data-theme='light'] .navbar {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] pre {
+  background: #f4f4f5 !important;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .ask-button-container {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar Title / Logo */
+.navbar__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}

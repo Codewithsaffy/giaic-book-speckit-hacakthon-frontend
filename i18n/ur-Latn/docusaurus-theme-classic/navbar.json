@@ -1,0 +1,10 @@
+{
+  "title": {
+    "message": "Meri Site",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Meri Site Logo",
+    "description": "The alt text of navbar logo"
+  }
+}

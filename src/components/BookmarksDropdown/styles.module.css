@@ -1,0 +1,202 @@
+/**
+ * Bookmarks Dropdown Styles
+ * Matches site's premium dark theme with glassmorphism
+ */
+
+.dropdown {
+    position: relative;
+}
+
+.dropdownBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    color: var(--ifm-font-color-secondary);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-family: var(--ifm-font-family-headings);
+}
+
+.dropdownBtn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
+    color: var(--ifm-font-color-base);
+}
+
+.badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    background: var(--ifm-color-primary);
+    border-radius: 8px;
+    font-size: 0.625rem;
+    font-weight: 600;
+    color: #0a0a0c;
+}
+
+.menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 280px;
+    max-height: 400px;
+    overflow-y: auto;
+    background: rgba(26, 26, 28, 0.98);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+}
+
+.menuHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    font-family: var(--ifm-font-family-headings);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--ifm-font-color-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.count {
+    color: var(--ifm-color-primary);
+}
+
+.menuList {
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0;
+}
+
+.menuItem {
+    display: flex;
+    align-items: center;
+    padding: 0 0.5rem;
+}
+
+.menuLink {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 0.625rem 0.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.15s ease;
+}
+
+.menuLink:hover {
+    background: rgba(255, 255, 255, 0.05);
+    text-decoration: none;
+}
+
+.linkTitle {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--ifm-font-color-base);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.linkPath {
+    font-size: 0.75rem;
+    color: var(--ifm-font-color-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 0.125rem;
+}
+
+.removeBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.375rem;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    color: var(--ifm-font-color-secondary);
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.15s ease;
+}
+
+.menuItem:hover .removeBtn {
+    opacity: 1;
+}
+
+.removeBtn:hover {
+    background: rgba(255, 100, 100, 0.15);
+    color: #ff6b6b;
+}
+
+.emptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    text-align: center;
+    color: var(--ifm-font-color-secondary);
+}
+
+.emptyState svg {
+    margin-bottom: 0.75rem;
+    opacity: 0.4;
+}
+
+.emptyState p {
+    margin: 0 0 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--ifm-font-color-base);
+}
+
+.emptyState span {
+    font-size: 0.75rem;
+}
+
+.placeholder {
+    width: 70px;
+    height: 36px;
+}
+
+/* Light mode */
+[data-theme='light'] .dropdownBtn {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .dropdownBtn:hover {
+    background: rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.12);
+}
+
+[data-theme='light'] .menu {
+    background: rgba(255, 255, 255, 0.98);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .menuHeader {
+    border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .menuLink:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+[data-theme='light'] .badge {
+    color: #fff;
+}

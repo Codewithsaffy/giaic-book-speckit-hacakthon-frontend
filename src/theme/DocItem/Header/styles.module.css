@@ -1,0 +1,13 @@
+/**
+ * DocItem Header Wrapper Styles
+ */
+
+.headerContainer {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.headerContainer > :first-child {
+    flex: 1;
+}

@@ -1,0 +1,20 @@
+/**
+ * DocItem/Content Wrapper Styles
+ */
+
+.contentWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.bookmarkContainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+}
+
+/* Light mode adjustments if needed */
+[data-theme='light'] .bookmarkContainer {
+    /* Optional adjustments */
+}

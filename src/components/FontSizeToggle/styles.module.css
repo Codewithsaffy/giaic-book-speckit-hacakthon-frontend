@@ -1,0 +1,52 @@
+/**
+ * Font Size Toggle Styles
+ * Matches site's premium dark theme
+ */
+
+.toggleBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    color: var(--ifm-font-color-secondary);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-family: var(--ifm-font-family-headings);
+}
+
+.toggleBtn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
+    color: var(--ifm-font-color-base);
+}
+
+.toggleBtn:active {
+    transform: scale(0.95);
+}
+
+.label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.placeholder {
+    width: 36px;
+    height: 36px;
+}
+
+/* Light mode */
+[data-theme='light'] .toggleBtn {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .toggleBtn:hover {
+    background: rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.12);
+}

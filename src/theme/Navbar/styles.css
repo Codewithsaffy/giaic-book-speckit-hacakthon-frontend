@@ -1,0 +1,180 @@
+/* Custom Navbar Styles - works with NavbarLayout */
+
+.custom-navbar__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+  padding: 0 1.5rem;
+  height: 60px;
+  gap: 2rem;
+}
+
+/* Left Section */
+.custom-navbar__left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-shrink: 0;
+}
+
+.custom-navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.custom-navbar__logo {
+  width: 28px;
+  height: 28px;
+}
+
+.custom-navbar__title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ifm-font-color-base);
+  letter-spacing: -0.02em;
+}
+
+.custom-navbar__dropdown {
+  position: relative;
+}
+
+.custom-navbar__dropdown-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--ifm-color-content);
+  font-size: 0.875rem;
+  font-family: var(--ifm-font-family-base);
+  cursor: pointer;
+  padding: 0.4rem 0.875rem;
+  border-radius: 16px;
+  transition: all 0.2s ease;
+  font-weight: 400;
+}
+
+.custom-navbar__dropdown-btn:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.custom-navbar__dropdown-btn svg {
+  opacity: 0.7;
+}
+
+/* Right Section */
+.custom-navbar__right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+/* Search - now in right section */
+.custom-navbar__search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 340px;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 0 1rem;
+  transition: all 0.2s ease;
+  gap: 0.625rem;
+  height: 38px;
+}
+
+.custom-navbar__search.focused {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.custom-navbar__search .search-icon {
+  color: var(--ifm-color-content-secondary);
+  flex-shrink: 0;
+  opacity: 0.5;
+  width: 16px;
+  height: 16px;
+}
+
+.custom-navbar__search-input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--ifm-font-color-base);
+  font-size: 0.875rem;
+  font-family: var(--ifm-font-family-base);
+  padding: 0;
+}
+
+.custom-navbar__search-input::placeholder {
+  color: var(--ifm-color-content-secondary);
+  opacity: 0.6;
+}
+
+.custom-navbar__search-shortcut {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.7rem;
+  color: var(--ifm-color-content-secondary);
+  font-family: var(--ifm-font-family-base);
+  flex-shrink: 0;
+  font-weight: 500;
+  line-height: 1;
+  min-width: 42px;
+}
+
+/* Theme Toggle */
+.custom-navbar__icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--ifm-color-content);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.custom-navbar__icon-btn:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.custom-navbar__icon-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Responsive */
+@media (max-width: 996px) {
+  .custom-navbar__search {
+    display: none;
+  }
+  
+  .custom-navbar__container {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .custom-navbar__dropdown {
+    display: none;
+  }
+}
