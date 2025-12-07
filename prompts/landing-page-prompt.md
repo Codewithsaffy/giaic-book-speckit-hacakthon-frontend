@@ -17,7 +17,7 @@ This folder contains 9 design reference images that should inspire the layout, s
 ## Context Instructions
 
 - **Maintain existing color theme and fonts** from the current book/documentation site
-- **Take context of content** from our current docs and write content or change content according to our book context
+- **Take context of content** from our current docs(currently we have dumy data when we write complete book then update it) and write content or change content according to our book context
 - **Use design inspiration images** provided as reference for modern aesthetics
 - **Focus on mobile-first design** with responsive layouts
 - **Take complete design inspiration** - structure, layout, and design from the given images

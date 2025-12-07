@@ -1,0 +1,11 @@
+{
+  "label": "Chapter 2: ROS 2 Fundamentals",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "title": "ROS 2 Fundamentals",
+    "description": "Humanoid robotics development ke liye essential ROS 2 ke core concepts aur building blocks seekhain",
+    "slug": "/category/ros2-fundamentals"
+  },
+  "collapsed": false
+}

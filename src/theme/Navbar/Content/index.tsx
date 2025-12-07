@@ -9,6 +9,7 @@ import LanguageToggle from '@site/src/components/LanguageToggle';
 import BookmarksDropdown from '@site/src/components/BookmarksDropdown';
 import FontSizeToggle from '@site/src/components/FontSizeToggle';
 import SearchBar from '@theme/SearchBar';
+import AuthGuard from '@site/src/components/Auth/AuthGuard';
 import styles from './styles.module.css';
 
 export default function NavbarContent(): ReactNode {
@@ -23,7 +24,9 @@ export default function NavbarContent(): ReactNode {
         <NavbarLogo />
 
         {/* Language Toggle Button */}
-        <LanguageToggle />
+        <AuthGuard>
+          <LanguageToggle />
+        </AuthGuard>
       </div>
 
       {/* Center Section: Search Bar */}
@@ -42,12 +45,12 @@ export default function NavbarContent(): ReactNode {
 
       {/* Right Section: Bookmarks + Font Size + Auth + Theme Toggle */}
       <div className={styles.navbarRight}>
-        <BookmarksDropdown />
-        <FontSizeToggle />
+        <AuthGuard>
+          <BookmarksDropdown />
+          <FontSizeToggle />
+        </AuthGuard>
 
-        <div className={styles.authContainer}>
-          <NavbarAuth />
-        </div>
+        <NavbarAuth />
         <NavbarColorModeToggle className={styles.colorModeToggle} />
       </div>
     </div>

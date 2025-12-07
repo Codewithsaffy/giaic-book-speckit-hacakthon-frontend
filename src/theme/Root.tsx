@@ -1,5 +1,6 @@
 import React from "react";
 import AuthProvider from "@site/src/components/Auth/AuthProvider";
+import AuthUIProvider from "@site/src/components/Auth/AuthUIProvider";
 
 import AskButton from '@site/src/components/AskButton';
 
@@ -10,8 +11,10 @@ import AskButton from '@site/src/components/AskButton';
 export default function Root({ children }: { children: React.ReactNode }) {
     return (
         <AuthProvider>
-            {children}
-            <AskButton />
+            <AuthUIProvider>
+                {children}
+                <AskButton />
+            </AuthUIProvider>
         </AuthProvider>
     );
 }

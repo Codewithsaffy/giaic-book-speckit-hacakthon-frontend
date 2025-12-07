@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'My Site',
+  title: 'ROBOX',
   tagline: 'Dinosaurs are cool',
   favicon: 'img/favicon.ico',
 
@@ -106,10 +106,10 @@ const config: Config = {
       respectPrefersColorScheme: false,
     },
     navbar: {
-      title: 'My Site',
+      title: 'ROBOX',
       logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        alt: 'ROBOX Logo',
+        src: 'img/robox-logo.png',
       },
       hideOnScroll: false,
       items: [], // Will be handled by custom navbar component
@@ -118,11 +118,19 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'Learn',
           items: [
             {
-              label: 'Tutorial',
+              label: 'Introduction',
               to: '/docs/intro',
+            },
+            {
+              label: 'ROS 2 Modules',
+              to: '/docs/category/module-1-ros2',
+            },
+            {
+              label: 'Simulation',
+              to: '/docs/category/module-2-digital-twin',
             },
           ],
         },
@@ -130,16 +138,16 @@ const config: Config = {
           title: 'Community',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'GitHub Discussions',
+              href: 'https://github.com/facebook/docusaurus/discussions',
             },
             {
-              label: 'Discord',
+              label: 'Discord Server',
               href: 'https://discordapp.com/invite/docusaurus',
             },
             {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
+              label: 'Contributors',
+              href: 'https://github.com/facebook/docusaurus/graphs/contributors',
             },
           ],
         },
@@ -151,13 +159,13 @@ const config: Config = {
               to: '/blog',
             },
             {
-              label: 'GitHub',
+              label: 'GitHub Repo',
               href: 'https://github.com/facebook/docusaurus',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Physical AI Book. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,

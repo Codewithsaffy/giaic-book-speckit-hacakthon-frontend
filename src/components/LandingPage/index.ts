@@ -1,0 +1,13 @@
+export { default as Hero } from './Hero';
+export { default as QuickValue } from './QuickValue';
+export { default as WhatYouWillLearn } from './WhatYouWillLearn';
+export { default as BookStructure } from './BookStructure';
+export { default as InteractivePreview } from './InteractivePreview';
+export { default as Audience } from './Audience';
+export { default as KeyFeatures } from './KeyFeatures';
+export { default as SocialProof } from './SocialProof';
+export { default as GettingStarted } from './GettingStarted';
+export { default as FAQ } from './FAQ';
+export { default as Community } from './Community';
+export { default as RelatedResources } from './RelatedResources';
+export { default as FinalCTA } from './FinalCTA';

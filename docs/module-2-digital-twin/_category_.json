@@ -1,0 +1,11 @@
+{
+    "label": "Module 2: Digital Twin & Simulation",
+    "position": 2,
+    "link": {
+        "type": "generated-index",
+        "title": "Module 2: Digital Twin and Simulation",
+        "description": "Learn digital twin concepts and simulation tools for robotics",
+        "slug": "/category/module-2-digital-twin"
+    },
+    "collapsed": false
+}

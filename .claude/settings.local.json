@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir \"F:\\HACKATHON\\docusurus-nextjs\\docusurus-frontend\\docs\\module-1-ros2\\chapter-3-python-ai-ros-integration\" /B)",
+      "Bash(dir \"F:\\HACKATHON\\docusurus-nextjs\\docusurus-frontend\\docs\\module-1-ros2\\chapter-4-urdf-humanoid-robots\" /B)",
+      "Bash(dir \"F:\\HACKATHON\\docusurus-nextjs\\docusurus-frontend\\docs\\module-1-ros2\\chapter-4-urdf-humanoid-robots\" /b)",
+      "Bash(bash -c \"if [ -f .specify/scripts/bash/check-prerequisites.sh ]; then .specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks; else echo ''{}''; fi\")",
+      "Bash(bash -c \"if [ -d ''specs/001-physical-ai-book/checklists'' ]; then ls specs/001-physical-ai-book/checklists/; else echo ''No checklists directory found''; fi\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

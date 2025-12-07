@@ -5,6 +5,24 @@ interface Message {
     id: string;
     role: 'assistant' | 'user';
     content: string;
+    sources?: Source[];
+}
+
+interface Source {
+    id: string | number;
+    score: number;
+    text: string;
+    metadata: Record<string, any>;
+}
+
+interface ChatRequest {
+    question: string;
+    top_k?: number;
+}
+
+interface ChatResponse {
+    answer: string;
+    sources: Source[];
 }
 
 interface ChatWidgetProps {
@@ -17,9 +35,11 @@ export default function ChatWidget({ onClose }: ChatWidgetProps): JSX.Element {
         {
             id: '1',
             role: 'assistant',
-            content: 'Hi! How can I help you with Claude Code Docs today?'
+            content: 'Hi! How can I help you with the documentation today?'
         }
     ]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
     const scrollToBottom = () => {
@@ -30,28 +50,63 @@ export default function ChatWidget({ onClose }: ChatWidgetProps): JSX.Element {
         scrollToBottom();
     }, [messages]);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!input.trim()) return;
+        if (!input.trim() || isLoading) return;
 
-        const newMessage: Message = {
+        const userMessage: Message = {
             id: Date.now().toString(),
             role: 'user',
             content: input
         };
 
-        setMessages(prev => [...prev, newMessage]);
+        setMessages(prev => [...prev, userMessage]);
         setInput('');
+        setIsLoading(true);
+        setError(null);
 
-        // Simulate response
-        setTimeout(() => {
-            const responseMessage: Message = {
+        try {
+            const requestBody: ChatRequest = {
+                question: input,
+                top_k: 3
+            };
+
+            const response = await fetch('http://localhost:8000/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(requestBody)
+            });
+
+            if (!response.ok) {
+                throw new Error(`API error: ${response.status} ${response.statusText}`);
+            }
+
+            const data: ChatResponse = await response.json();
+
+            const assistantMessage: Message = {
                 id: (Date.now() + 1).toString(),
                 role: 'assistant',
-                content: "I'm a demo assistant. I can't actually answer questions yet, but I look good!"
+                content: data.answer,
+                sources: data.sources
             };
-            setMessages(prev => [...prev, responseMessage]);
-        }, 1000);
+
+            setMessages(prev => [...prev, assistantMessage]);
+        } catch (err) {
+            const errorMessage = err instanceof Error ? err.message : 'Failed to get response';
+            setError(errorMessage);
+
+            const errorAssistantMessage: Message = {
+                id: (Date.now() + 1).toString(),
+                role: 'assistant',
+                content: `Sorry, I encountered an error: ${errorMessage}. Please make sure the API server is running at http://localhost:8000`
+            };
+
+            setMessages(prev => [...prev, errorAssistantMessage]);
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -99,6 +154,29 @@ export default function ChatWidget({ onClose }: ChatWidgetProps): JSX.Element {
                         {msg.role === 'assistant' && (
                             <>
                                 <div className={styles.messageContent}>{msg.content}</div>
+
+                                {/* Display sources if available */}
+                                {msg.sources && msg.sources.length > 0 && (
+                                    <div className={styles.sourcesContainer}>
+                                        <div className={styles.sourcesTitle}>📚 Sources:</div>
+                                        {msg.sources.map((source, idx) => (
+                                            <div key={source.id} className={styles.sourceItem}>
+                                                <div className={styles.sourceHeader}>
+                                                    <span className={styles.sourceNumber}>Source {idx + 1}</span>
+                                                    <span className={styles.sourceScore}>
+                                                        Relevance: {(source.score * 100).toFixed(1)}%
+                                                    </span>
+                                                </div>
+                                                <div className={styles.sourceText}>
+                                                    {source.text.length > 150
+                                                        ? `${source.text.substring(0, 150)}...`
+                                                        : source.text}
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+
                                 <div className={styles.messageActions}>
                                     <button className={styles.actionBtn} title="Good response">
                                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -128,6 +206,20 @@ export default function ChatWidget({ onClose }: ChatWidgetProps): JSX.Element {
                         )}
                     </div>
                 ))}
+
+                {/* Loading indicator */}
+                {isLoading && (
+                    <div className={`${styles.message} ${styles.messageAssistant}`}>
+                        <div className={styles.messageContent}>
+                            <div className={styles.loadingDots}>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
                 <div ref={messagesEndRef} />
             </div>
 
